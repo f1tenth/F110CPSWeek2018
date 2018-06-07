@@ -1,5 +1,5 @@
 # F1tenth Porto Grand Prix
-![Output sample](https://github.com/f1tenth/F110CPSWeek2018/blob/master/Media/f110porto.gif)
+![Output sample](https://github.com/f1tenth/F110CPSWeek2018/blob/master/Assets/f110porto.gif)
 
 Collection of code from the F1tenth Porto Grand Prix held at CPSWeek 2018. For more information on how to build your own car please visit [our website](http://f1tenth.org)!
 
