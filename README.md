@@ -3,7 +3,7 @@
 
 Collection of code from the F1tenth Porto Grand Prix held at CPSWeek 2018. For more information on how to build your own car please visit [our website](http://f1tenth.org)!
 
-# Repository Organization
+# Autonomous Drivers
 The source code for participants vehicles is organized by University. 
 
 ## Czech Technical University (CTU)
