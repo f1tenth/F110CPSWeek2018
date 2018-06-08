@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node name="static_tf_laser" pkg="tf" type="static_transform_publisher" args="-0.12 0 0.17 0 0 0 /footprint /laser 100" />
+    <node name="static_tf_imu" pkg="tf" type="static_transform_publisher" args="0.10 0.04 0.07 0 0 0 /footprint /base_imu_link 100" />
+    <node name="static_tf_zed" pkg="tf" type="static_transform_publisher" args="0.20 0 0.05 0 0 0 /footprint /zed_initial_frame 100" />
+
+    <node pkg="rf2o_laser_odometry" type="rf2o_laser_odometry_node" name="rf2o_laser_odometry">
+        <param name="laser_scan_topic" value="/scan"/> 
+        <param name="base_frame_id" value="/footprint"/>           
+        <param name="odom_frame_id" value="/odom" />
+        <param name="freq" value="40.0"/>                            
+    </node>
+
+    <!--node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+        <param name="output_frame" value="odom"/>
+        <param name="freq" value="10.0"/>
+        <param name="sensor_timeout" value="1.0"/>
+        <param name="odom_used" value="true"/>
+        <param name="imu_used" value="true"/>
+        <param name="vo_used" value="false"/>
+        <param name="debug" value="false"/>
+        <param name="self_diagnose" value="false"/>
+    </node-->
+
+    <node name="dino_nav" pkg="dino_nav" type="dinonav" output="screen"/>
+</launch>
+
+
+
