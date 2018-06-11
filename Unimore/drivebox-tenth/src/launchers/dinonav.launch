@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <node name="visual_odometry" pkg="visual_odometry" type="visual_odometry" output="screen">
+        <param name="odom_topic" value="/odom"/>
+        <param name="base_frame_id" value="footprint"/>
+        <param name="odom_frame_id" value="odom"/>
+        <param name="zed_frame_id" value="zed_initial_frame"/>
+    </node>
+
+	<node name="dino_nav" pkg="dino_nav" type="dinonav" output="screen"/>
+</launch>
+
+
+

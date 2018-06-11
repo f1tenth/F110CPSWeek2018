@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+	<remap from="imu" to="imu/data"/>
+	<!--include file="$(find razor_imu_9dof)/launch/razor-pub.launch" /-->
+
+	<node pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0" name="serial" />
+<!--	<node pkg="race" type="talker.py" name="talker" /> -->
+<!--	<node pkg="race" type="keyboard.py" name="keybord" output="screen" /> -->
+
+	<node pkg="urg_node" type="urg_node" args="_ip_address:=192.168.1.11" name="laser_node" output="log"/>
+
+	<node name="static_tf_laser" pkg="tf" type="static_transform_publisher" args="0.12 0 0.17 0 0 0 /footprint /laser 100" />
+	<node name="static_tf_imu" pkg="tf" type="static_transform_publisher" args="0.10 0.04 0.07 0 0 0 /footprint /base_imu_link 100" />
+	<node name="static_tf_zed" pkg="tf" type="static_transform_publisher" args="0.20 0 0.05 0 0 0 /footprint /zed_initial_frame 100" />
+
+
+    <node name="visual_odometry" pkg="visual_odometry" type="visual_odometry" output="screen">
+        <param name="odom_topic" value="/odom"/>
+        <param name="base_frame_id" value="footprint"/>
+        <param name="odom_frame_id" value="odom"/>
+        <param name="zed_frame_id" value="zed_initial_frame"/>
+    </node>
+
+	<node name="dino_nav" pkg="dino_nav" type="dinonav" output="screen"/>
+
+</launch>
+

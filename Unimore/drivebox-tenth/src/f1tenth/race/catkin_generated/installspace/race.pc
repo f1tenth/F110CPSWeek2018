@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: race
+Description: Description of race
+Version: 0.0.0
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib 
+Requires: message_runtime

@@ -1,0 +1,11 @@
+build/
+devel/
+doc/
+.idea
+src/.idea
+.catkin_workspace
+*.pyc
+\#*\#
+*~
+.vscode/
+dataset/
