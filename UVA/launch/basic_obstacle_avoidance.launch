@@ -1,0 +1,6 @@
+<launch>
+<node name="urg_node" pkg="urg_node" type="laser_scanner" />
+<node name="steering_control.py" pkg="race" type="steering_control" />
+<node name="throttle_control.py" pkg="race" type="throttle_control" />
+<node name="basic_racecar_control.py" pkg="race" type="racecar_control" />
+</launch>
