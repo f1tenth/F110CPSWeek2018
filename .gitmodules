@@ -1,0 +1,3 @@
+[submodule "hw/teensy-template"]
+	path = hw/teensy-template
+	url = https://github.com/apmorton/teensy-template.git
