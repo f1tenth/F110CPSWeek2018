@@ -6,8 +6,8 @@
 #include <std_msgs/UInt32.h>
 #include <std_msgs/Int32.h>
 #include <std_msgs/Empty.h>
-#include <f1tenth_race/drive_values.h>
-#include <f1tenth_race/pwm_high.h>
+#include <rericha_racing/drive_values.h>
+#include <rericha_racing/pwm_high.h>
 
 /* Input capture FTM register values */
 #define FTM_SC_VALUE (FTM_SC_TOIE | FTM_SC_CLKS(1) | FTM_SC_PS(0))
