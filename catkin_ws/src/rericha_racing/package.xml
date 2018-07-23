@@ -6,11 +6,11 @@
     
   </description>
 
-  <maintainer email="vajnamar@fel.cvut.cz">Martin Vajnar</maintainer>
+  <maintainer email="martin.vajnar@cvut.cz">Martin Vajnar</maintainer>
 
   <license>GPLv3</license>
 
-  <author email="vajnamar@fel.cvut.cz">Martin Vajnar</author>
+  <author email="martin.vajnar@cvut.cz">Martin Vajnar</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 

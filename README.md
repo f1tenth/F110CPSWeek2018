@@ -73,3 +73,7 @@ This project is published under GPLv3.
     ├── doc                         # documentation
     ├── hw                          # hardware, low level, firmware
     └── README.md                   # this readme file
+
+## Contact
+web pages: http://industrialinformatics.cz
+e-mail: rericha@rtime.felk.cvut.cz
