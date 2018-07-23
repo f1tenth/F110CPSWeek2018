@@ -19,7 +19,7 @@ export ROS_IP=LOCAL_IP_ADDR
 ## Installing / Getting started
 
 ### Compile the project
-The main ROS package (rericha\_racing) is can be compiled using the catkin tool
+The main ROS package (rericha\_racing) can be compiled using the catkin tool
 
 ```
 cd catkin_ws
@@ -58,7 +58,7 @@ make upload
 
 ### Run the competition code
 ```
-roslaunch rericha\_racing run\_follow-the-gap.launch
+roslaunch rericha_racing run_follow-the-gap.launch
 ```
 
 ## Licensing
