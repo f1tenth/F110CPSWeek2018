@@ -5,7 +5,7 @@
 # and adjusts speed and steering rate before turns
 #
 # Author: Jaroslav Klapalek
-# Copyright: Czech Technical University in Prague, (C) 2018
+# Copyright (C) 2018 Czech Technical University in Prague
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

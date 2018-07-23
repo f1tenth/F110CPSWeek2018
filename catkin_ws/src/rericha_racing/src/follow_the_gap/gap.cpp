@@ -3,7 +3,7 @@
  * Gap description class
  *
  * Author: Anders Solberg Pedersen
- * Copyright: Czech Technical University in Prague, (C) 2018
+ * Copyright (C) 2018 Czech Technical University in Prague
  *
  * This file is part of rericha_racing.
  *
