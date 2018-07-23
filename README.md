@@ -31,8 +31,22 @@ source devel/setup.bash
 Installing ROS full already includes almost all used messages. However some of them are missing:
 
 ### Teensy firmware
+The firmware is used for accomplishing the following tasks:
+- Generate PWM signals for controlling the steering servo and setting the reference speed for the VESC
+- Capture the output of the RF transceiver
+- Based on signal values coming from the RF transceiver, switch from autonomous to manual control mode
+- Switching between manual and autonomous mode is possible by sending boolean value on the eStop topic
+
+Note that in order for the firmware to be compatible with the power board supplied to the participants,
+one needs to solder a wire between pins 2 and 4 of the Teensy board.
+
 #### In schroot
 - catkin workspace already sourced
+- clone the teensy-template submodule with the required toolchain
+
+```
+git submodule update --init
+```
 
 ```
 sudo apt-get install ros-indigo-rosserial-arduino ros-indigo-rosserial
