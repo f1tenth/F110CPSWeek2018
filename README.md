@@ -1,5 +1,5 @@
 # F1/10 @ CTU
-Workspace containing whatever is needed to run F1/10 car at CTU.
+Workspace containing whatever is needed to run F1/10 car at CTU. We use V2 car configuration with the VESC and Teensy.
 
 **Headstart**: This file is written in a way to be more generic. It means that distro versions may be omitted and only common designation is kept - (e.g. for package `ros-indigo-std-msgs` only `-std-msgs` is left)
 
@@ -83,11 +83,19 @@ This project is published under GPLv3.
     ├── catkin_ws                   # catkin workspace
     │   └── src                         # sources of ROS packages
     │       └── rericha_racing              # external, for simulations
-    ├── deb                         # Debian metapackages
-    ├── doc                         # documentation
     ├── hw                          # hardware, low level, firmware
     └── README.md                   # this readme file
 
-## Contact
+## About Us
+![Meet our team](team.jpg)
+
+Hi, we are a bunch of enthusiastic students and engineers from Prague.
+
+Our team has 7 members:
+- 4 Master students (A. Pedersen, D. Kopecky, J. Bednar, J. Klapalek),
+- 2 Ph.D. students (J. Matejka, M. Vajnar)
+- 1 professor (Z. Hanzalek)
+
+
 web pages: http://industrialinformatics.cz
 e-mail: rericha@rtime.felk.cvut.cz
