@@ -9,6 +9,7 @@
 ## Requirements
 
 - ROS Indigo
+    - rosserial_python
 - Ubuntu 14.04
 - F1Tenth Platform
 - Jetson TK1
@@ -31,15 +32,12 @@ Make sure your terminals are sourced.
 3. Emergency stop node
 
     `rosrun emergency_stop estop_filter.py`
-4. IMU Node
-
-    `rosrun razor_imu_9dof imu_node.py`
-5. In one terminal, run the following:
+4. In one terminal, run the following:
 
     `./setup_bridge.py`
 
     `rosrun urg_node urg_node _ip_address:=192.168.1.11`
-6. Controller
+5. Controller
 
     `rosrun pure_pursuit manhattan_control.py`
 
