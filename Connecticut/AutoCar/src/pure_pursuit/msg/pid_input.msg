@@ -1,0 +1,4 @@
+float32 dist_left
+float32 dist_right
+float32 heading_angle_rad
+float32 velocity
