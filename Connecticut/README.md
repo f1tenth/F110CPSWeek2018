@@ -20,7 +20,7 @@ We use the V1 Platform, and the LiDAR. No other sensors factored into our decisi
 
 ## Repository Organization
 
-The catkin workspace is in `AutoCar`. The code on the Teensy is in `TeensyFirmware`
+The catkin workspace is in `AutoCar`. The code on the Teensy is in `AutoCar/TeensyFirmware`
 
 ## How to Build
 
