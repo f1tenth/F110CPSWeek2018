@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" default=""/>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find vehicle_description)/urdf/vehicle_urdf.xacro'"/>
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+</launch>

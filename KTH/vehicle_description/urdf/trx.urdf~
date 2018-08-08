@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<robot name="mira">
+
+    <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+    </material>
+    <material name="red">
+        <color rgba="0.8 0 0 1"/>
+    </material>
+    <material name="green">
+        <color rgba="0 0.8 0 1"/>
+    </material>
+    <material name="grey">
+        <color rgba="0.75 0.75 0.75 1"/>
+    </material>
+    <material name="white">
+        <color rgba="1.0 1.0 1.0 1"/>
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+	<!-- * * * Link Definitions * * * -->
+    <link name="base_link">
+
+        <visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.06" length="0.09"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+	</link>
+
+
+
+    <link name="roll_M1_link">
+
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.005" radius="0.01"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+    </link>
+
+    <joint name="roll_joint" type="revolute">
+    	<parent link="base_link"/>
+    	<child link="roll_M1_link"/>
+        <origin xyz="0.0023 0 -0.0005" rpy="0 0 0"/>
+        <limit lower="-0.2" upper="0.2" effort="0.1" velocity="0.005"/>
+        <axis xyz="1 0 0"/>
+	</joint>
+
+
+
+    <link name="pitch_M2_link">
+
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.005" radius="0.01"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+    </link>
+
+
+    <joint name="pitch_joint" type="revolute">
+    	<parent link="roll_M1_link"/>
+    	<child link="pitch_M2_link"/>
+    	<origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+        <limit lower="0" upper="0.44" effort="0.1" velocity="0.005"/>
+        <axis xyz="0 1 0"/>
+	</joint>
+
+
+    <link name="yaw_M3_link">
+
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.005" radius="0.01"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <joint name="yaw_joint" type="continuous">
+    	<parent link="pitch_M2_link"/>
+    	<child link="yaw_M3_link"/>
+        <origin xyz="0.01 0 0" rpy="0 1.5708 0"/>
+        <limit effort="0.1" velocity="0.01"/>
+        <axis xyz="0 0 1"/>
+	</joint>
+
+
+    <link name="head_link">
+
+		<visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <sphere radius="0.06"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+	</link>
+
+
+    <joint name="base_head_joint" type="fixed">
+    	<parent link="yaw_M3_link"/>
+    	<child link="head_link"/>
+    	<origin xyz="0 0 0.06" rpy="0 0 0"/>
+	</joint>
+
+    <link name="left_eye_link">
+
+		<visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.00525" length="0.00525"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+	</link>
+
+    <link name="right_eye_link">
+
+		<visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.00525" length="0.00525"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+	</link>
+
+    <joint name="head_lefteye_joint" type="fixed">
+        <parent link="head_link"/>
+        <child link="left_eye_link"/>
+        <origin xyz="0.0095 0.057 0.0085" rpy="-1.5708 0 0"/>
+    </joint>
+
+    <joint name="head_righteye_joint" type="fixed">
+        <parent link="head_link"/>
+        <child link="right_eye_link"/>
+        <origin xyz="-0.0095 0.057 0.0085" rpy="-1.5708 0 0"/>
+    </joint>
+
+    <link name="camera_link">
+		<visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.0005 0.0005 0.0005"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+	</link>
+
+
+    <joint name="head_camera_joint" type="fixed">
+        <parent link="head_link"/>
+        <child link="camera_link"/>
+        <origin xyz="0 0.057 0.0255" rpy="0 0 0"/>
+    </joint>
+
+
+</robot>
