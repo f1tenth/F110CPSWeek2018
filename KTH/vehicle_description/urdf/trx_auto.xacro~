@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<robot name="trx_auto" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Degree-to-radian conversions -->
+  <xacro:property name="degrees_45" value="0.785398163"/>
+  <xacro:property name="degrees_90" value="1.57079633"/>

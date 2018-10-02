@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="lidar_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="ip_address" value="192.168.3.11"/>
+    <param name="frame_id" value="laser"/>
+    <param name="calibrate_time" value="true"/>
+    <param name="publish_intensity" value="false"/>
+    <param name="publish_multiecho" value="false"/>
+    <param name="angle_min" value="-2.356194490192345"/>
+    <param name="angle_max" value="2.356194490192345"/>
+  </node>
+</launch>

@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+
+<robot name="trx_auto" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Degree-to-radian conversions -->
+    <xacro:property name="degrees_45" value="0.785398163"/>
+    <xacro:property name="degrees_90" value="1.57079633"/>
+
+<!--intertial parameters-->
+    <xacro:macro name="hokuyo_inertial_params">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.130"/>
+        <inertia ixx="4E-06" ixy="0"      ixz="0"
+                             iyy="4E-06"  iyz="0"
+                                          izz="4E-06"/>
+    </xacro:macro>
+
+
+<!--materials-->
+    <material name="chassis_mat">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+
+    <material name="black">
+      <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+
+    <material name="blue">
+      <color rgba="0.0 0.0 0.8 1.0"/>
+    </material>
+
+    <material name="green">
+      <color rgba="0.0 0.8 0.0 1.0"/>
+    </material>
+
+    <material name="grey">
+      <color rgba="0.2 0.2 0.2 1.0"/>
+    </material>
+
+    <material name="light_grey">
+        <color rgba="0.8 0.8 0.8 0.8"/>
+    </material>
+
+    <material name="dark_grey">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+
+    <material name="orange">
+      <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+    </material>
+
+    <material name="brown">
+      <color rgba="${222/255} ${207/255} ${195/255} 1.0"/>
+    </material>
+
+    <material name="red">
+      <color rgba="0.8 0.0 0.0 1.0"/>
+    </material>
+
+    <material name="white">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+<!-- imu_link -->
+    <link name="razor_imu">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="blue"/>
+            <geometry>
+                <box size="0.02 0.02 0.02"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="razor_imu"/>
+        <axis xyz="0 0 -1"/>
+        <origin xyz="-0.17 0 0" rpy="0 0 0"/>
+    </joint>
+<!-- base_link -->
+    <link name = "base_link">
+        <visual>
+            <geometry>
+                <box size = "0.01 0.01 0.01" />
+            </geometry>
+            <material name="chassis_mat"/>
+        </visual>
+    </link>
+
+    <gazebo reference = "base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+
+<!-- Hokuyo laser scanner -->
+    <link name="laser">
+        <inertial>
+            <xacro:hokuyo_inertial_params/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.07"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://trx_description/meshes/hokuyo.dae"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+    </link>
+
+    <joint name="hokuyo_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser"/>
+        <origin xyz="0.202 0.0 0.0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+
+<!--trx chassis-->
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="chassis">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://trx_description/meshes/trx_chassis.stl"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+    </link>
+
+<!-- zed camera -->
+<!-- zed center link-->
+    <joint name="zed_camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="zed_camera_link"/>
+        <origin xyz="0 0 -0.07" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="zed_camera_link">
+        <!-- Todo: add collision and inertial-->
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://trx_description/meshes/ZED.stl"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+    </link>
+<!-- zed left camera-->
+    <joint name="zed_left_camera_joint" type="fixed">
+        <parent link="zed_camera_link"/>
+        <child link="zed_left_camera"/>
+        <origin xyz="0 0.06 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="zed_left_camera">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.007" length="0.031"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+<!-- zed right camera-->
+    <joint name="zed_right_camera" type="fixed">
+        <parent link="zed_camera_link"/>
+        <child link="zed_right_camera"/>
+        <origin xyz="0 -0.06 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="zed_right_camera">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 1.57 0"/>
+            <geometry>
+                <cylinder radius="0.007" length=".031"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+<!-- zed depth camera for zed-ros-wrapper -->
+    <link name="camera_link"/>
+
+    <joint name = "zed_depth_camera_joint" type="fixed">
+        <parent link="zed_left_camera"/>
+        <child link="camera_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+</robot>
+
+
